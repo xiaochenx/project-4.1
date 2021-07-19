@@ -2,11 +2,11 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 import Home from './Components/Home';
-import Navbar from './components/Navbar';
-import Signup from './components/Signup';
-import Login from './components/Login';
-import TripList from './components/TripList';
-import Trip from './components/Trip';
+import Navbar from './Components/Navbar';
+import Signup from './Components/Signup';
+import Login from './Components/Login';
+import TripList from './Components/TripList';
+import Trip from './Components/Trip';
 
 function App() {
 
