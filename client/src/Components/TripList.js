@@ -46,7 +46,7 @@ const TripList = () => {
             <div>
                 {trips.length > 0 ?
                     <div className="card">
-                        <h3 className='form-title'>Here are all your secret trips. Just click to view!</h3>
+                        <h3 className='form-title'>Here are all your trips. Just click to view!</h3>
                         {tripsList}
                         {tripFormFlag ? 
                             <TripForm addTrip ={addTrip}/>

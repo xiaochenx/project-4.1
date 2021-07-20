@@ -54,7 +54,7 @@ const Trip = (props) =>{
                     <div>
                         <h2 className='home'>{trip.title}</h2>
                         <p className='content'>{trip.content}</p>
-                        <p>Added on - {trip.date}</p>
+                        <p>Leaving on - {trip.date}</p>
                         {editFormFlag ? <EditForm editTrip={editTrip} trip={trip} /> : <button className="submit-button" onClick={() => setEditFormFlag(true)}>Edit Trip</button>} 
                         <button className="submit-button" onClick={deleteTrip}> Delete Trip</button>
                     </div>

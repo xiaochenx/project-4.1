@@ -18,12 +18,12 @@ const TripForm = ({addTrip}) => {
         <div>
             <form className="trip-form" onSubmit={handleSubmit}>
                 <h3 className='form-title'>Complete the form below to add a new trip!</h3>
-                <label>Title</label>
+                <label>Destination</label>
                 <br/>
                 <input type="text" id="title" value={title} onChange={(e) => setTitle(e.target.value)}></input>
                 <br/>
                 <br/>
-                <label>Content</label>
+                <label>Things to do</label>
                 <br/>
                 <textarea type="text" id="content" rows="4" cols="50" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
                 <br/>
