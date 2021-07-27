@@ -31,14 +31,14 @@ const Trip = (props) =>{
         })
     }
 
-    const editTrip = (expense) =>{
+    const editTrip = (content) =>{
         fetch(`/trips/${trip.id}`,{
           method: "PATCH",
           headers:{
             "Content-Type": "application/json",
             "Accept": "application/json"
           },
-          body:JSON.stringify(expense)
+          body:JSON.stringify(content)
         })
         .then(resp => resp.json())
         .then((data) => {

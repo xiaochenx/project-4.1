@@ -1,15 +1,17 @@
 class TripsController < ApplicationController
-    before_action :authorized
+    before_action :authorized, :current_user
+    before_action :set_trip, only: [:show, :update, :destroy]
+    before_action :trip_found?, only: [:show, :update, :destroy]
 
     def index
-        user = User.find_by(id: session[:user_id])
-        trips = user.trips
+        
+        trips = @user.trips
         render json: trips
     end
 
     def create
-        user = User.find_by(id: session[:user_id])
-        trip = user.trips.create(trip_params)
+        
+        trip = @user.trips.create(trip_params)
         if trip.valid?
             render json: trip, status: :created
         else
@@ -18,38 +20,30 @@ class TripsController < ApplicationController
     end
  
     def show
-        user = User.find_by(id: session[:user_id])
-        trip = user.trips.find_by(id: params[:id])
-        if trip
-            render json: trip
-        else
-            render json: { error: "Not Authorized"}, status: :unauthorized
-        end
+        render json: @trip           
     end
 
     def update
-        user = User.find_by(id: session[:user_id])
-        trip = user.trips.find_by(id: params[:id])
-        if trip
-            trip.update(trip_params)
-            render json: trip  
-        else
-            render json: { error: "Not Authorized"}, status: :unauthorized
-        end
+            @trip.update(trip_params)
+            render json: @trip     
     end
 
     def destroy
-        user = User.find_by(id: session[:user_id])
-        trip = user.trips.find_by(id: params[:id])
-        if trip
-            trip.destroy
-            head :no_content   
-        else
-            render json: { error: "Not Authorized"}, status: :unauthorized
-        end
+            @trip.destroy
+            head :no_content      
     end
 
     private 
+
+    
+
+    def set_trip
+        @trip = @user.trips.find_by(id: params[:id])
+    end
+
+    def trip_found?
+        render json: { error: "Not Found"}, status: :no_content unless @trip
+    end
 
     def trip_params
         params.permit(:title, :content, :date)

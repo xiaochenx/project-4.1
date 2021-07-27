@@ -33,6 +33,7 @@ const history=props.history
   }, [])
 
   const LoginUser= (u) => {
+    // console.log(u)
     if(u.error == "Invalid username or password"){
       setLoggedIn(false)
       alert(loginError);

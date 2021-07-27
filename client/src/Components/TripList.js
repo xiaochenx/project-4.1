@@ -39,7 +39,7 @@ const TripList = () => {
         })
     }
 
-    const tripsList = trips.map( p => <TripLink key={p.id} trip={p} />)
+    const tripsList = trips.map( t => <TripLink key={t.id} trip={t} />)
 
     if (error ===''){
         return (
